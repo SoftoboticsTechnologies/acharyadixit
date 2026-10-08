@@ -125,7 +125,7 @@
 
   function setMenu(open) {
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
     mobileNav.classList.toggle('is-open', open);
     if (open) { mobileNav.removeAttribute('inert'); } else { mobileNav.setAttribute('inert', ''); }
   }
