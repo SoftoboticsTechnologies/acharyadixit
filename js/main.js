@@ -1,5 +1,6 @@
-/* Hero slider — fade transition, 4s autoplay, arrows, dots, keyboard,
-   swipe, pause on hover/focus, explicit pause button, reduced-motion aware. */
+/* Hero slider — full-width background crossfade, 5.5s autoplay, arrows, dots,
+   keyboard, swipe, pause on hover/focus, explicit pause button,
+   reduced-motion aware. */
 (function () {
   'use strict';
 
@@ -13,7 +14,7 @@
   var pauseBtn = root.querySelector('.slider-pause');
   var live = root.querySelector('.slider-live');
 
-  var DELAY = 4000;
+  var DELAY = 5500;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   var current = 0;
   var timer = null;
@@ -21,10 +22,10 @@
   var userPaused = reduceMotion.matches;
   var dots = [];
 
-  // Load the image for a slide (and its neighbour) on demand.
+  // Load a slide's background photo on demand (the first one is in the markup and preloaded).
   function prime(i) {
-    var img = slides[i] && slides[i].querySelector('img[data-src]');
-    if (img) { img.src = img.getAttribute('data-src'); img.removeAttribute('data-src'); }
+    var bg = slides[i] && slides[i].querySelector('[data-bg]');
+    if (bg) { bg.style.backgroundImage = "url('" + bg.getAttribute('data-bg') + "')"; bg.removeAttribute('data-bg'); }
   }
 
   slides.forEach(function (slide, i) {
